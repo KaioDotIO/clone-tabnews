@@ -1,14 +1,9 @@
 import { Client, QueryConfig } from "pg";
 
 async function query(queryObject: string | QueryConfig<any[]>) {
-  const port: number | undefined = parseInt(
-    process.env.POSTGRES_PORT as string,
-    10,
-  );
-
   const client = new Client({
     host: process.env.POSTGRES_HOST,
-    port: port,
+    port: parseInt(process.env.POSTGRES_PORT as string),
     user: process.env.POSTGRES_USER,
     database: process.env.POSTGRES_DB,
     password: process.env.POSTGRES_PASSWORD,
